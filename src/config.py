@@ -37,7 +37,14 @@ DESCRIPTION_COL = "Description"
 # === Artifacts ===
 # Support both local and GCS paths
 GCS_BUCKET = os.environ.get("MODEL_BUCKET", "dataset-clv")
-IS_GCS_DEPLOYMENT = os.environ.get("GOOGLE_CLOUD_PROJECT") is not None
+
+# Better detection for GCS deployment
+IS_GCS_DEPLOYMENT = (
+    os.environ.get("GOOGLE_CLOUD_PROJECT") is not None or 
+    os.environ.get("GAE_ENV") is not None or 
+    os.environ.get("K_SERVICE") is not None or  # Cloud Run
+    os.environ.get("MODEL_BUCKET") is not None  # If MODEL_BUCKET is set, assume GCS
+)
 
 if IS_GCS_DEPLOYMENT:
     # Use GCS paths when deployed
