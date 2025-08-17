@@ -14,13 +14,25 @@ else:
         raise FileNotFoundError("❌ No CSV file found in 'data/' and CLV_DATA not set.")
     CSV_PATH = csv_files[0]
 
-# Fixed column names (from your dataset)
+# Updated column names to match your dataset
 DATE_COL  = "transaction_date"
 CUST_COL  = "customer_id"
 INV_COL   = "transaction_id"
 QTY_COL   = "quantity_purchased"
 UP_COL    = "unit_price"
 TOTAL_COL = "total_sale_amount"
+
+# Additional columns available in your dataset
+LOYALTY_COL = "loyalty_status"
+AGE_COL = "age"
+GENDER_COL = "gender"
+LOCATION_COL = "location"
+PRODUCT_ID_COL = "product_id"
+PRODUCT_CAT_COL = "product_category"
+BRAND_COL = "brand"
+STOCK_QTY_COL = "stock_quantity"
+PAYMENT_METHOD_COL = "payment_method"
+DESCRIPTION_COL = "Description"
 
 # === Artifacts ===
 ART_DIR = Path("artifacts")
